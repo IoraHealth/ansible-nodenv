@@ -23,20 +23,6 @@
     dest: ~/.nodenv/plugins/node-build
     update: "{{ nodenv_update }}"
 
-- name: read nodenv versions
-  vars.rb:
-    namespace: nodenv
-    vars:
-      nodes: "{{ nodenv_nodes }}"
-    src: |
-      exe = "#{ ENV['HOME'] }/.nodenv/bin/nodenv"
-      vars = {}
-      vars[:installed_versions] = `#{ exe } versions --bare`.split
-      vars[:available_versions] = `#{ exe } install --list`.split
-      vars[:build_needs_update] = (nodes - vars[:available_versions]).length > 0
-      vars
-  changed_when: false
-
 - name: install node-build
   git:
     repo: https://github.com/OiNutter/node-build.git
