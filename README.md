@@ -1,31 +1,42 @@
-nrser.nodenv
+ansible-nodenv
 ============
 
-nrser.nodenv ansible role
+An Ansible role to manage nodenv that was originally forked from https://github.com/nrser/ansible-nrser.nodenv
 
-Requirements
-------------
+The role:
 
-Any pre-requisites that may not be covered by Ansible itself or the role should be mentioned here. For instance, if the role uses the EC2 module, it may be a good idea to mention in this section that the boto package is required.
+* installs nodenv
+* adds the shell path addition and nodenv init call
+* installs nodenv-build plugin
+* installs nodenv-aliases plugins
+* installs node versions defined in the role variable
+* install node aliases defined in role variable
+* sets a global node version define in role variable
 
-Role Variables
---------------
-
-A description of the settable variables for this role should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.
-
-Dependencies
-------------
-
-A list of other roles hosted on Galaxy should go here, plus any details in regards to parameters that may need to be set for other roles, or variables that are used from other roles.
-
-Example Playbook
+Example usage
 ----------------
 
-Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
+An example of using the role and defining all of the variables:
 
-    - hosts: servers
-      roles:
-         - { role: username.rolename, x: 42 }
+```
+roles:
+- role: ansible-nodenv
+  nodenv_github_base_url: https://github.com/nodenv
+  nodenv_shell_config_file: ~/.bashrc
+  nodenv_node_versions: [4.0.0, 5.0.0]
+  nodenv_version: v1.0.0
+  nodenv_node_aliases:
+  - { alias: 'v4.0.0', target: '4.0.0' }
+  nodenv_global: 4.0.0
+```
+
+To run the nodenv tasks under a specific user you can include the role with the become directive:
+
+```
+roles:
+- role: ansible-nodenv
+  become: deploy
+```
 
 License
 -------
@@ -35,4 +46,5 @@ BSD
 Author Information
 ------------------
 
-<https://github.com/nrser>
+* Current version: IoraHealth <https://github.com/IoraHealth>
+* Original forked role author: <https://github.com/nrser>

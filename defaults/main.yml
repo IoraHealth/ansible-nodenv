@@ -1,5 +1,4 @@
 ---
-# defaults file for nrser.nodenv
 nodenv_github_base_url: https://github.com/nodenv
 nodenv_shell_config_file: ~/.bashrc
 nodenv_node_versions: []
