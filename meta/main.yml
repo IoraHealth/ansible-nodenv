@@ -1,6 +1,0 @@
----
-galaxy_info:
-  author: nrser
-  description: nrser.nodenv ansible role
-  license: BSD
-  min_ansible_version: 1.2
