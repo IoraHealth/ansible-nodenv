@@ -23,17 +23,10 @@
     dest: ~/.nodenv/plugins/node-build
     update: "{{ nodenv_update }}"
 
-- name: install node-build
-  git:
-    repo: "{{ nodenv_github_base_url }}/node-build.git"
-    dest: ~/.nodenv/plugins/node-build
-    update: true
-  when: nodenv_build_needs_update
-
 - name: install node.js versions
   command: ~/.nodenv/bin/nodenv install {{ item }}
   when: item not in nodenv_installed_versions
-  with_items: "{{ nodenv_nodes }}"
+  with_items: "{{ nodenv_node_versions }}"
 
 # set the global
 - name: get nodenv global ruby
