@@ -1,0 +1,9 @@
+---
+dependencies: []
+
+galaxy_info:
+  author: IoraHealth, nrser
+  description: Ansible role to install and manage nodenv
+  license: BSD
+  min_ansible_version: 1.2
+
