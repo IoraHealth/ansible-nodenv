@@ -7,15 +7,15 @@
     dest: ~/.nodenv
     update: "{{ nodenv_update }}"
 
-- name: add nodenv path line to .bash_profile
+- name: add nodenv path line to shell config file
   lineinfile:
     line: export PATH="$HOME/.nodenv/bin:$PATH"
-    dest: ~/.bash_profile
+    dest: "{{ nodenv_shell_config_file }}"
 
-- name: add nodenv init line to .bash_profile
+- name: add nodenv init line to shell config file
   lineinfile:
     line: eval "$(nodenv init -)"
-    dest: ~/.bash_profile
+    dest: "{{ nodenv_shell_config_file }}"
 
 - name: install node-build
   git:
